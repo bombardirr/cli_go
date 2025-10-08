@@ -2,16 +2,19 @@ package main
 
 import (
 	"bufio"
-	"cli_go/pkg/banner"
 	"cli_go/pkg/fixes"
+	"cli_go/pkg/menu"
 	"fmt"
 	"os"
 )
 
 func main() {
 	fixes.FixLanguageSwitch()
-	banner.PrintBanner()
+	menu.ShowMenu()
 
 	fmt.Println("Нажмите Enter для выхода")
-	bufio.NewReader(os.Stdin).ReadString('\n')
+	_, err := bufio.NewReader(os.Stdin).ReadString('\n')
+	if err != nil {
+		return
+	}
 }
